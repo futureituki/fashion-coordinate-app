@@ -6,10 +6,23 @@
     "dev": "nuxt dev --port-3002",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+    "lintfix": "prettier --write --list-different . && npm run lint -- --fix"
   },
   "devDependencies": {
     "@types/node": "^18",
-    "nuxt": "^3.4.3"
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/eslint-config-typescript": "^11.0.3",
+    "eslint": "^8.39.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.11.0",
+    "nuxt": "^3.4.3",
+    "prettier": "^2.8.8"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.6.7"
   }
 }

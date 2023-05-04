@@ -12,9 +12,8 @@
 
 <style scoped>
 .card {
-  padding-top: 56%;
-  margin-bottom: 6.3%;
   width: 45%;
+  aspect-ratio: 7 / 10;
 }
 .img {
   background: url('/test2.jpeg');

@@ -1,95 +1,33 @@
-<!-- 下から出てくるモーダルウィンドウ -->
 <template>
-  <div v-show="show">
-    <transition name="modal">
-      <div class="modal-mask">
-        <div class="modal-wrapper">
-          <div class="modal-container">
-            <div class="modal-header">
-              <slot name="header"> default header </slot>
-            </div>
-            <div class="modal-body">
-              <slot name="body"> default body </slot>
-            </div>
-            <div class="modal-footer">
-              <slot name="footer">
-                default footer
-                <button class="modal-default-button" @click="$emit('close')">
-                  OK
-                </button>
-              </slot>
-            </div>
-          </div>
-        </div>
+  <div
+    class="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 before:content[''] before:absolute before:w-full before:h-full before:content before:backdrop-blur-sm before:transition-all"
+    :class="
+      visible
+        ? 'opacity-100 before:opacity-100'
+        : 'opacity-0 pointer-events-none before:opacity-0'
+    "
+  >
+    <div
+      class="p-6 relative max-w-[500px] border-2 w-10/12 bg-white rounded-md transition-all"
+      :class="visible ? 'translate-y-0' : 'translate-y-96'"
+    >
+      <button
+        class="before:content[''] before:absolute before:top-8 before:left-10 before:w-0.5 before:h-9 before:bg-black before:rounded-sm before:-translate-x-1/2 before:-translate-y-1/2 before:-rotate-45 after:content[''] after:absolute after:top-8 after:left-10 after:w-0.5 after:h-9 after:bg-black after:rounded-sm after:-translate-x-1/2 after:-translate-y-1/2 after:rotate-45"
+        @click="$emit('close')"
+      ></button>
+      <div class="mb-5 text-center">
+        <slot></slot>
       </div>
-    </transition>
+    </div>
   </div>
 </template>
-<!-- 下から出てくるモーダルウィンドウのスタイル -->
-<style>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  display: table;
-  transition: opacity 0.3s ease;
-}
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-.modal-container {
-  width: 300px;
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-.modal-body {
-  margin: 20px 0;
-}
-.modal-default-button {
-  float: right;
-}
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
-.modal-enter {
-  opacity: 0;
-}
-.modal-leave-active {
-  opacity: 0;
-}
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-</style>
-<!-- 下から出てくるモーダルウィンドウのスクリプト -->
 
 <script setup lang="ts">
 interface Props {
-  show: boolean
+  visible: boolean
 }
-
 withDefaults(defineProps<Props>(), {
-  show: false,
+  visible: false,
 })
+const $emit = defineEmits(['update:visible'])
 </script>

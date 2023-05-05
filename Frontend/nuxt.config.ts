@@ -3,6 +3,10 @@ export default defineNuxtConfig({
   postcss: {
     plugins: { tailwindcss: {} },
   },
-  css: ['~/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css',
+    '@fortawesome/fontawesome-svg-core/styles.css',
+  ],
   modules: ['@nuxtjs/tailwindcss'],
+  plugins: ['@/plugins/fontawesome.ts'],
 })

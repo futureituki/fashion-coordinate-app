@@ -1,18 +1,16 @@
 <template>
-  <div class="mx-10 my-3">
-    <button class="w-full rounded p-2 text-white" :class="[bgColor]">
-      <slot />
-    </button>
-  </div>
+  <button class="w-full rounded p-2" :class="[props]">
+    <slot />
+  </button>
 </template>
 
 <script setup lang="ts">
 interface Props {
-  bgColor: string
+  props: string
 }
 // TODO プライマリーカラーが決まったらデフォルトはプライマリーカラーにする
 withDefaults(defineProps<Props>(), {
-  bgColor: 'bg-red-400',
+  props: '',
 })
 </script>
 

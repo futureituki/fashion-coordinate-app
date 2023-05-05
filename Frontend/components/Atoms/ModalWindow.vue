@@ -11,14 +11,14 @@
       class="p-6 relative max-w-[500px] border-2 w-10/12 bg-white rounded-md transition-all"
       :class="visible ? 'translate-y-0' : 'translate-y-96'"
     >
-      <button
-        class="before:content[''] before:absolute before:top-8 before:left-10 before:w-0.5 before:h-9 before:bg-black before:rounded-sm before:-translate-x-1/2 before:-translate-y-1/2 before:-rotate-45 after:content[''] after:absolute after:top-8 after:left-10 after:w-0.5 after:h-9 after:bg-black after:rounded-sm after:-translate-x-1/2 after:-translate-y-1/2 after:rotate-45"
-        @click="$emit('close')"
-      ></button>
-      <div class="mb-5 text-center">
+      <div class="text-center">
         <slot></slot>
       </div>
     </div>
+    <button
+      class="before:content[''] before:absolute before:top-8 before:right-10 before:w-0.5 before:h-9 before:bg-black before:rounded-sm before:-translate-x-1/2 before:-translate-y-1/2 before:-rotate-45 after:content[''] after:absolute after:top-8 after:right-10 after:w-0.5 after:h-9 after:bg-black after:rounded-sm after:-translate-x-1/2 after:-translate-y-1/2 after:rotate-45"
+      @click="$emit('close')"
+    ></button>
   </div>
 </template>
 

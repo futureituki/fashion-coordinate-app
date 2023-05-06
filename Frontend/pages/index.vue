@@ -1,9 +1,9 @@
 <template>
   <div>
+    <Header :user="user" />
     <MainVisual />
     <section class="mt-14 mb-8">
       <div class="mt-4 mb-4 grid place-items-center">
-        <img :src="user ? user.image : ''" class="w-10 h-10 rounded-2xl" />
         <span class="leading-4 tracking-wide font-bold"
           >さっそくコーデを見てみよう</span
         >
@@ -17,6 +17,7 @@
         </div>
       </div>
       <nuxt-link to="/test">test</nuxt-link>
+      <img :src="user ? user.image : ''" class="w-10 h-10 rounded-2xl" />
     </section>
   </div>
 </template>
@@ -25,9 +26,10 @@
 import { storeToRefs } from 'pinia'
 import { ref, onMounted } from 'vue'
 import MainVisual from '~/components/Atoms/MainVisualCard.vue'
+import Header from '~/components/Molecules/Header.vue'
 import Tab from '~/components/Molecules/TabBar.vue'
 import ImageCard from '~/components/Atoms/ImageCard.vue'
-import { useFetchUser } from '~/composable/client/useFetchUser'
+import { useFetchMe } from '~/composable/client/useFetchMe'
 import { useUser } from '~/stores/userStore'
 const activeItem = ref(1)
 const { user } = storeToRefs(useUser())
@@ -44,6 +46,6 @@ onMounted(async () => {
   //   }
   // })
   // const user = await data.json()
-  await useFetchUser()
+  await useFetchMe()
 })
 </script>

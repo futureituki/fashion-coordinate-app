@@ -5,6 +5,12 @@
 </template>
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
 import { useUser } from '~/stores/userStore'
-const user = useUser().user
+onMounted(() => {
+  const user = useUser().user
+  if (!user) {
+    useRouter().push('/top')
+  }
+})
 </script>

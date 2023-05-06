@@ -1,6 +1,7 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const UserModel = require('../models/user')
 const passport = require('passport')
+const random = require('../src/lib/random')  
 require('dotenv').config();
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -18,6 +19,7 @@ module.exports = function(passport) {
   async(accessToken, refreshToken, profile, cb) => {
     const newUser = {
       id: profile.id,
+      uid: random(),
       name: profile.displayName,
       email: '',
       image: profile.photos[0].value,

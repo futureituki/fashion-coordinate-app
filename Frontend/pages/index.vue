@@ -3,6 +3,7 @@
     <MainVisual />
     <section class="mt-14 mb-8">
       <div class="mt-4 mb-4 grid place-items-center">
+        <img :src="user ? user.image : ''" class="w-10 h-10 rounded-2xl" />
         <span class="leading-4 tracking-wide font-bold"
           >さっそくコーデを見てみよう</span
         >
@@ -15,18 +16,34 @@
           <ImageCard />
         </div>
       </div>
+      <nuxt-link to="/test">test</nuxt-link>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
+import { ref, onMounted } from 'vue'
 import MainVisual from '~/components/Atoms/MainVisualCard.vue'
 import Tab from '~/components/Molecules/TabBar.vue'
 import ImageCard from '~/components/Atoms/ImageCard.vue'
+import { useFetchUser } from '~/composable/client/useFetchUser'
+import { useUser } from '~/stores/userStore'
 const activeItem = ref(1)
+const { user } = storeToRefs(useUser())
 const tabItems = [
   { tabId: 1, tabName: '人気' },
   { tabId: 2, tabName: '新着' },
 ]
+onMounted(async () => {
+  // const data = await fetch('http://localhost:8080/user', {
+  //   method:'GET',
+  //   credentials: 'include',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   }
+  // })
+  // const user = await data.json()
+  await useFetchUser()
+})
 </script>

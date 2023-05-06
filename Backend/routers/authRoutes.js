@@ -3,13 +3,14 @@ const passport = require('passport')
 const app = express()
 
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['email','profile'] }));
+  passport.authenticate('google', { scope: ['email','profile'] }))
 
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login', session:true }),
   function(req, res) {
+    req.session.user = req.user
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3002/');
+    res.redirect('http://localhost:3002');
   });
 
 

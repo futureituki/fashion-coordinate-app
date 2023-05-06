@@ -8,7 +8,7 @@
     "
   >
     <div
-      class="p-6 relative max-w-[500px] border-2 w-10/12 bg-white rounded-md transition-all"
+      class="p-6 relative max-w-[400px] border-2 w-10/12 bg-white rounded-md transition-all"
       :class="visible ? 'translate-y-0' : 'translate-y-96'"
     >
       <div class="text-center">

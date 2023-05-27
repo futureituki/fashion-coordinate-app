@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <main class="block">
+    <main class="block bg-red-50">
       <slot />
     </main>
     <Footer />

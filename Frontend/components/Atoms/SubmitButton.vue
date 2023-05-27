@@ -7,6 +7,7 @@
 <script setup lang="ts">
 interface Props {
   props: string
+  type: 'submit' | 'button' | 'reset'
 }
 // TODO プライマリーカラーが決まったらデフォルトはプライマリーカラーにする
 withDefaults(defineProps<Props>(), {

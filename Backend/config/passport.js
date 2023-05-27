@@ -17,11 +17,12 @@ module.exports = function(passport) {
     callbackURL: "http://localhost:8080/auth/google/callback"
   },
   async(accessToken, refreshToken, profile, cb) => {
+    console.log(profile)
     const newUser = {
       id: profile.id,
       uid: random(),
       name: profile.displayName,
-      email: '',
+      email: profile.emails[0].value,
       image: profile.photos[0].value,
       cordes: []
     }

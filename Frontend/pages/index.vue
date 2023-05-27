@@ -8,7 +8,7 @@
           >さっそくコーデを見てみよう</span
         >
       </div>
-      <Tab :activeItem="activeItem" :tabItems="tabItems" />
+      <Tab :activeItem="activeItem" :tabItems="tabItems" :click="setItem" />
       <div class="mt-14 mb-14">
         <div class="flex gap-10 justify-center flex-wrap">
           <ImageCard />
@@ -16,8 +16,7 @@
           <ImageCard />
         </div>
       </div>
-      <nuxt-link to="/test">test</nuxt-link>
-      <img :src="user ? user.image : ''" class="w-10 h-10 rounded-2xl" />
+      <nuxt-link to="/mypage">test</nuxt-link>
     </section>
   </div>
 </template>
@@ -37,6 +36,9 @@ const tabItems = [
   { tabId: 1, tabName: '人気' },
   { tabId: 2, tabName: '新着' },
 ]
+const setItem = (id: number) => {
+  activeItem.value = id
+}
 onMounted(async () => {
   // const data = await fetch('http://localhost:8080/user', {
   //   method:'GET',

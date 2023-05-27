@@ -4,7 +4,10 @@
       ログイン
     </Button>
     <ModalWindow :visible="isVisible" @close="isVisible = false">
-      <Button props="border-2 border-solid text-md py-3.5 w-full rounded-2xl">
+      <Button
+        props="border-2 border-solid text-md py-3.5 w-full rounded-2xl"
+        type="button"
+      >
         <a href="http://localhost:8080/auth/google">
           <div class="flex items-center gap-2 w-full justify-center">
             <img

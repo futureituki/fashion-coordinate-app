@@ -3,6 +3,7 @@ export interface User {
   name: string
   email: string
   image: string
+  gender: string
   cordes: Array<{
     title: string
     body: string

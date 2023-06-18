@@ -30,7 +30,11 @@ import Tab from '~/components/Molecules/TabBar.vue'
 import ImageCard from '~/components/Atoms/ImageCard.vue'
 import { useFetchMe } from '~/composable/client/useFetchMe'
 import { useUser } from '~/stores/userStore'
+import { toastSuccessHandler } from '~/lib/toastHandler'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import SubmitButton from '~/components/Atoms/SubmitButton.vue'
 const activeItem = ref(1)
+const router = useRouter()
 const { user } = storeToRefs(useUser())
 const tabItems = [
   { tabId: 1, tabName: '人気' },
@@ -48,6 +52,7 @@ onMounted(async () => {
   //   }
   // })
   // const user = await data.json()
+  // expressリダイレクトの場合は、router.currentRoute.value.query.codeで取得できる
   await useFetchMe()
 })
 </script>

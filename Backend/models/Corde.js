@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const CodeSchema = new Schema({
+const CordeSchema = new Schema({
   id: {
     type: Number,
     required: true,
@@ -16,6 +16,6 @@ const CodeSchema = new Schema({
 })
 
 
-const Code = mongoose.model('Code', CodeSchema)
+const Corde = mongoose.model('Corde', CordeSchema)
 
-module.exports = Code
+module.exports = Corde

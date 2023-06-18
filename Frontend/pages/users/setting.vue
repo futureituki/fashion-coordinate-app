@@ -42,7 +42,11 @@
                   class="text-md font-mono text-gray-500"
                   v-show="displayNameVisible"
                 >
-                  佐藤樹
+                  {{
+                    user && user.name
+                      ? user.name
+                      : '登録するとあなたのユーザーページなどに表示されます。'
+                  }}
                 </p>
               </div>
               <Button

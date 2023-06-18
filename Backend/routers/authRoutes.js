@@ -10,7 +10,7 @@ app.get('/auth/google/callback',
   function(req, res) {
     req.session.user = req.user
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3002');
+    res.redirect('http://localhost:3002/authorized')
   });
 
 
